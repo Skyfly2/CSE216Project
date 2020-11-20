@@ -74,4 +74,44 @@ public class CSE216Facade extends
       stl.writeToLogger("Received Message = " + up);
 
    }
+   synchronized public void limitMsg(Object o)
+   {
+         CState c = getMsg(o);
+         String lines = c.getMessage();
+
+         while(lines.length()!=0){
+            wrapOneLine(lines);
+         }
+      
+   }
+	public final static int LINE_MAX = 50;
+
+   /**
+	 * wrapOneLine method that fills the new text file
+    *  with the desired text formatting
+	 * @param inLine: String
+	 * @param output: PrintWriter
+	 */
+   public  void wrapOneLine(String inLine) {
+		
+	for(int i = 0; i < inLine.length(); i += LINE_MAX) {
+		if(inLine.length() >= i + LINE_MAX) {		
+			stl.writeToLogger(inLine.substring(i, i + LINE_MAX));	
+		}
+		else {		
+			stl.writeToLogger(inLine.substring(i));		
+		}
+		stl.writeToLogger("\r\n");	
+	}
+   }
+   
+   synchronized public void abbreviateMsg(Object o, int limit)
+   {
+      
+      CState c = getMsg(o);
+      String msg = c.getMessage();
+      stl.writeToLogger(msg.substring(0, limit));
+      
+   }
+   
 }
