@@ -1,7 +1,7 @@
 import java.util.*;
 import java.sql.*;
 
-public class CSE216DBQuery {
+public class CSE216DBQuery extends CSE216Facade {
     private static Connection con = CSE216DBConnect.connect();
 
     public void store(CState obj) {
