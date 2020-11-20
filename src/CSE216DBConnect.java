@@ -1,7 +1,7 @@
 import java.util.*;
 import java.sql.*;
 
-public class CSE216DBConnect {
+public class CSE216DBConnect extends CSE216Facade {
     private static String host = "localhost:3306";
     private static String user = "root";
     private static String pass = "";
