@@ -94,15 +94,24 @@ public class CSE216Facade extends
 	 */
    public  void wrapOneLine(String inLine) {
 		
-		for(int i = 0; i < inLine.length(); i += LINE_MAX) {
-			if(inLine.length() >= i + LINE_MAX) {		
-				stl.writeToLogger(inLine.substring(i, i + LINE_MAX));	
-			}
-			else {		
-				stl.writeToLogger(inLine.substring(i));		
-			}
-			stl.writeToLogger("\r\n");	
+	for(int i = 0; i < inLine.length(); i += LINE_MAX) {
+		if(inLine.length() >= i + LINE_MAX) {		
+			stl.writeToLogger(inLine.substring(i, i + LINE_MAX));	
 		}
+		else {		
+			stl.writeToLogger(inLine.substring(i));		
+		}
+		stl.writeToLogger("\r\n");	
 	}
+   }
+   
+   synchronized public void abbreviateMsg(Object o, int limit)
+   {
+      
+      CState c = getMsg(o);
+      String msg = c.getMessage();
+      stl.writeToLogger(msg.substring(0, limit));
+      
+   }
    
 }
