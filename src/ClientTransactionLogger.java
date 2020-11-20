@@ -56,6 +56,7 @@ public class ClientTransactionLogger {
          topanel.setText(S);
          topanel.repaint();
       }
+      this.count = countClient();
       SimpleLog.write(filename, S);
    }
 
@@ -65,12 +66,11 @@ public class ClientTransactionLogger {
 
    public void logClient(String message) {
       this.message = message;
-      writeToLogger(message);
+      writeToLogger("Message: \"" + message + "\" recieved by client");
    }
 
    public int countClient() {
-      this.count = this.count + 1;
-      return this.count;
+      return this.count + 1;
    }
 
    private ClientTransactionLogger() {
