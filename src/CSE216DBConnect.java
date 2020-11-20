@@ -8,7 +8,8 @@ public class CSE216DBConnect extends CSE216Facade {
 
     public static Connection connect() {
         try {
-            Connection connect = DriverManager.getConnection(host, user, pass);
+            Connection connect = 
+                            DriverManager.getConnection(host, user, pass);
             return connect;
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

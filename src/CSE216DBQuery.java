@@ -5,8 +5,10 @@ public class CSE216DBQuery extends CSE216Facade {
     private static Connection con = CSE216DBConnect.connect();
 
     public void store(CState obj) {
-        String query = "INSERT INTO objects (hostname, filename, filetype, message, v, size) VALUES ("
-                + obj.getHostname() + ", " + obj.getFilename() + ", " + obj.getFiletype() + ", " + obj.getMessage()
+        String query = "INSERT INTO objects 
+                (hostname, filename, filetype, message, v, size) VALUES ("
+                + obj.getHostname() + ", " + obj.getFilename() + ", "
+                + obj.getFiletype() + ", " + obj.getMessage()
                 + ", " + obj.getV() + ", " + obj.getFilesize() + ")";
         try (Statement statement = con.createStatement()) {
             ResultSet result = statement.executeQuery(query);
